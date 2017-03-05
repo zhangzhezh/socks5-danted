@@ -34,7 +34,7 @@ socksmethod: pam.username
 log: connect disconnect
 }
 socks pass {
-from: 0.0.0.0/0 to: 0.0.0.0/0 port gt 1023
+from: 0.0.0.0/0 to: 0.0.0.0/0
 command: bind
 log: connect disconnect
 }
