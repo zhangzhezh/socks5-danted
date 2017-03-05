@@ -1,11 +1,8 @@
 #!/bin/bash
-DEFAULT_PORT=$(( RANDOM % ( 65534-1024 ) + 1024 ))
+DEFAULT_PORT="1080"
 DEFAULT_USER="alipms"
 DEFAULT_PAWD="alipms123"
-MASTER_IP1="23.252.106.4/32"
-MASTER_IP2="107.161.27.33/32"
-MASTER_IP3="23.249.161.27/32"
-MASTER_IP4="162.218.90.0/24"
+MASTER_IP1="192.168.0.0/24"
 VERSION="v1.4.0"
 
 genconfig(){
@@ -27,21 +24,6 @@ logoutput: /var/log/danted_${TAG}.log
 ##### Master Config ##############
 client pass {
 from: ${MASTER_IP1} to: 0.0.0.0/0
-socksmethod: none
-log: connect disconnect
-}
-client pass {
-from: ${MASTER_IP2} to: 0.0.0.0/0
-socksmethod: none
-log: connect disconnect
-}
-client pass {
-from: ${MASTER_IP3} to: 0.0.0.0/0
-socksmethod: none
-log: connect disconnect
-}
-client pass {
-from: ${MASTER_IP4} to: 0.0.0.0/0
 socksmethod: none
 log: connect disconnect
 }
