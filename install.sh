@@ -25,15 +25,9 @@ logoutput: /var/log/danted_${TAG}.log
 ##### Master Config ##############
 client pass {
 from: ${MASTER_IP1} to: 0.0.0.0/0
-socksmethod: none
 log: connect disconnect
 }
 #################################
-client pass {
-from: 0.0.0.0/0 to: 0.0.0.0/0
-socksmethod: pam.username
-log: connect disconnect
-}
 socks pass {
 from: 0.0.0.0/0 to: 0.0.0.0/0
 command: bind
