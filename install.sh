@@ -69,8 +69,8 @@ useradd sock -s /bin/false > /dev/null 2>&1
 rm -rf /etc/danted
 mkdir -p /etc/danted/conf
 
-Getserverip_n=$(ifconfig | grep 'inet addr' | grep -Ev 'inet addr:127.0.0|inet addr:192.168.0|inet addr:10.0.0' | sed -n 's/.*inet addr:\([^ ]*\) .*/\1/p' | wc -l)
-Getserverip=$(ifconfig | grep 'inet addr' | grep -Ev 'inet addr:127.0.0|inet addr:192.168.0|inet addr:10.0.0' | sed -n 's/.*inet addr:\([^ ]*\) .*/\1/p')
+Getserverip_n=$(ifconfig | grep 'inet addr' | grep -Ev 'inet addr:127.0.0|inet addr:10.0.0' | sed -n 's/.*inet addr:\([^ ]*\) .*/\1/p' | wc -l)
+Getserverip=$(ifconfig | grep 'inet addr' | grep -Ev 'inet addr:127.0.0|inet addr:10.0.0' | sed -n 's/.*inet addr:\([^ ]*\) .*/\1/p')
 
 serverip=$Getserverip
 ( [ -z "$serverip" ] || [ -z "$(echo $Getserverip | grep "$serverip" )" ] ) && echo 'Get IP address Error.Try again OR report bug.' && exit
