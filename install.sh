@@ -1,9 +1,9 @@
 #!/bin/bash
 DEFAULT_PORT="1080"
-DEFAULT_USER="alipms"
-DEFAULT_PAWD="alipms123"
+DEFAULT_USER="zhangzhezh"
+DEFAULT_PAWD="zhangzhezh123"
 MASTER_IP1="192.168.0.0/24"
-VERSION="v1.4.0"
+VERSION="v1.4.2"
 
 genconfig(){
   # CONFIGFILE $IP $PORT $N
@@ -15,9 +15,10 @@ genconfig(){
 #### Danted Sock5 Config For: ${TAG} ${IP} #####
 internal: ${IP} port = ${PORT}
 external: ${IP}
-#socksmethod: none
+clientmethod: none
+socksmethod: none
 #socksmethod: username
-socksmethod: pam.username none
+#socksmethod: pam.username none
 user.notprivileged: sock
 logoutput: /var/log/danted_${TAG}.log
 
@@ -110,9 +111,9 @@ cd ../
 fi
 
 if [ ! -s /etc/danted/sbin/sockd ] || [ -z "$(/etc/danted/sbin/sockd -v | grep "$VERSION")" ];then
-wget http://www.inet.no/dante/files/dante-1.4.0.tar.gz
-tar zxvf dante*
-cd dante*
+wget https://www.inet.no/dante/files/dante-1.4.2.tar.gz
+tar zxvf dante-1.4.2.tar.gz
+cd dante-1.4.2
 ./configure --with-sockd-conf=/etc/danted/conf/sockd.conf --prefix=/etc/danted
 make && make install
 cd ../../
